@@ -1,10 +1,17 @@
-pipeline {
-    agent { docker { image 'node:6.3' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'npm --version'
-            }
-        }
+Pipeline {
+  agent any
+  stages {
+    stage('Cleanup') {
+      steps {
+        deleteDir()
+      }
     }
+    stage ('SCM (github)') {
+      steps {
+        git (url: 'https://github.dxc.com/schitti2/harmodel.git',
+        credentialsId: 'tokenpass',
+        branch: 'master',) 
+      }
+    }
+  }
 }
