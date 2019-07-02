@@ -8,8 +8,8 @@ Pipeline {
     }
     stage ('SCM (github)') {
       steps {
-        git (url: 'https://github.dxc.com/schitti2/harmodel.git',
-        credentialsId: 'tokenpass',
+        git (url: 'https://github.com/bmn24/codepipeline.git',
+        credentialsId: 'git_hub',
         branch: 'master',) 
       }
     }
